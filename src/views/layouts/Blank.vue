@@ -1,11 +1,11 @@
 <template>
-  <h1>Users Page</h1>
+  <div>
+    <slot />
+  </div>
 </template>
 
 <script>
-export default {
-  name: "Users"
-};
+export default {};
 </script>
 
 <style>

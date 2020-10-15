@@ -1,20 +1,21 @@
 <template>
   <v-app>
-    <Navbar />
-    <v-content class="ma-4">
-      <router-view></router-view>
-    </v-content>
+    <component :is="layout">
+      <router-view />
+    </component>
   </v-app>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-
+const defaultLayout = "default";
 export default {
   name: "App",
 
-  components: {
-    Navbar
+  components: {},
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || defaultLayout) + "-layout";
+    }
   },
 
   data: () => ({

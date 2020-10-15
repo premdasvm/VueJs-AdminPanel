@@ -6,28 +6,32 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/login",
+    name: "Login",
+    meta: { layout: "blank" },
+    component: () => import("../views/Login.vue"),
+  },
+  {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/users",
     name: "Users",
-    component: () =>
-      import("../views/Users.vue")
+    component: () => import("../views/Users.vue"),
   },
   {
     path: "/questions",
     name: "Questions",
-    component: () =>
-      import("../views/Questions.vue")
-  }
+    component: () => import("../views/Questions.vue"),
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
