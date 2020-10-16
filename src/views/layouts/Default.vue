@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <main class="main">
+    <v-content class="ma-4">
       <slot />
-    </main>
+    </v-content>
   </div>
 </template>
 
