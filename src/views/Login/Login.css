@@ -1,37 +1,3 @@
-<template>
-  <v-container fluid fill-height class="container">
-    <div class="page-container">
-      <div class="login-card">
-        <div class="login-card_body">
-          <h1 class="login-card_title">Login Form</h1>
-          <form action="" class="login-card_form">
-            <input class="login-card_input" placeholder="Email" required />
-            <input
-              type="password"
-              class="login-card_input"
-              placeholder="Password"
-              required
-            />
-            <button @click="login" class="login-card_btn">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </v-container>
-</template>
-
-<script>
-export default {
-  name: "Login",
-  methods: {
-    login() {
-      this.$router.push("/dashboard");
-    }
-  }
-};
-</script>
-
-<style scoped >
 .container {
   align-items: center;
   justify-content: center;
@@ -108,5 +74,3 @@ export default {
   margin-bottom: 8px;
   font-size: 13px;
 }
-</style>
-
