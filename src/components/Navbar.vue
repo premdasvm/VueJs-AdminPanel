@@ -1,95 +1,95 @@
 <template>
   <nav>
-    <v-app-bar
-      src="https://steamuserimages-a.akamaihd.net/ugc/862862503076386616/61EC84F5EF2B67AF8E4BE68B60B778AD6840E7CF/"
-      dark
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title class="text-uppercase ">
-        <span class="font-weight-light">Admin</span>
-        <span>panel</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn text v-on="on">
-            <v-icon left>expand_more</v-icon>
-            <span>Menu</span>
-          </v-btn>
-        </template>
-        <v-list flat>
-          <v-list-item
-            class="listItem"
-            v-for="link in links"
-            :key="link.text"
-            router
-            :to="link.route"
-            active-class="border"
-          >
-            <v-list-item-title>{{ link.text }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-      <v-btn text to="/login">
-        <span>LogOut</span>
-        <v-icon right>exit_to_app</v-icon>
-      </v-btn>
+    <v-app-bar dark app color="#eeeeee">
+      <v-app-bar-nav-icon style="color: black" @click.stop="drawer = !drawer" />
     </v-app-bar>
-    <v-navigation-drawer
-      v-model="drawer"
-      dark
-      app
-      src="https://steamuserimages-a.akamaihd.net/ugc/862862503076386616/61EC84F5EF2B67AF8E4BE68B60B778AD6840E7CF/"
-    >
-      <v-layout column align-center>
-        <v-flex class="mt-5">
-          <v-avatar size="100">
-            <img src="../assets/Avatar.png" alt="" />
-          </v-avatar>
-          <p class="white--text subheading mt-1 text-center">Admin</p>
-        </v-flex>
-      </v-layout>
-      <v-list flat>
-        <!-- <v-hover v-slot:default="{ hover }"> -->
-        <v-list-item
-          v-for="link in links"
-          :key="link.text"
-          router
-          :to="link.route"
-          active-class="border"
-        >
-          <v-list-item-action>
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ link.text }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <!-- </v-hover> -->
-      </v-list>
+    <v-navigation-drawer v-model="drawer" dark app>
+      <v-navigation-drawer absolute permanent class="py-0">
+        <v-layout column fill-height>
+          <v-list flat>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title>Padaz</v-list-item-title>
+                <v-list-item-subtitle>International</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list-item
+              v-for="link in links"
+              :key="link.text"
+              router
+              :to="link.route"
+              active-class="border"
+            >
+              <v-list-item-action style="margin-right: 10px">
+                <v-icon>{{ link.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ link.text }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+          <v-spacer></v-spacer>
+          <v-list flat class="py-0">
+            <!-- <v-list-item class="success"> -->
+            <v-list-item
+              v-for="logoutLink in logoutLinks"
+              :key="logoutLink.text"
+              router
+              :to="logoutLink.route"
+              active-class="border"
+            >
+              <v-list-item-icon style="margin-right: 10px">
+                <v-icon>{{ logoutLink.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ logoutLink.text }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-layout>
+      </v-navigation-drawer>
     </v-navigation-drawer>
   </nav>
 </template>
+
 <script>
 export default {
   data: () => ({
     drawer: true,
+    logoutLinks: [{ icon: "logout", text: "Logout", route: "/login" }],
     links: [
       { icon: "dashboard", text: "Dashboard", route: "/" },
       { icon: "person", text: "Users", route: "/users" },
-      { icon: "event_note", text: "Questions", route: "/questions" }
-    ]
+      { icon: "inventory", text: "Products", route: "/products" },
+      { icon: "shopping_cart", text: "Orders", route: "/orders" },
+      { icon: "assignment_late", text: "Product Requests", route: "/requests" },
+    ],
   }),
-  components: {}
 };
 </script>
+
 <style scoped>
 .border {
-  border-left: 6px solid #0ba518;
+  border-left: 6px solid #d48648;
+  background-color: rgba(96, 125, 139, 0.4);
 }
+
+.v-list {
+  margin: 5px;
+}
+
+.v-app-bar-nav-icon {
+  color: black;
+}
+
 .v-list .v-list-item:hover {
   background-color: rgba(96, 125, 139, 0.4);
+}
+
+.navdrawer {
+  display: flex;
+  flex-direction: column;
 }
 
 .v-list .v-list-item {
